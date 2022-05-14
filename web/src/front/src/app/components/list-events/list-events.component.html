@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header">Events</div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Timestamp</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of Events; let i = index">
+          <th scope="row">{{e._id}}</th>
+          <td>{{ e.title }}</td>
+          <td>{{ e.timestamp }}</td>
+          <td>
+	    <a class='btn btn-info' routerLink="/event/update/{{ e._id }}">edit</a>
+	    <!-- <a class='btn btn-danger' routerLink="/event/delete/{{ e._id }}/{{ e._rev }}">delete</a></td> -->
+	    <a class='btn btn-danger' (click)='deleteEvent(e._id, e._rev, i)'>delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

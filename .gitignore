@@ -1,2 +1,4 @@
 *.swp
 persistence/data
+dist
+node_modules
