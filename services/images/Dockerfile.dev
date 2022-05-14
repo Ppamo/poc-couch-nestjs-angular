@@ -1,0 +1,8 @@
+FROM node:18.1.0-buster
+LABEL maintainer=pablo@ppamo.cl
+EXPOSE 3000
+RUN apt update && apt -y upgrade && \
+	printf "alias c='cd'; alias l='ls -plh'; alias la='ls -plah'" >> $HOME/.bashrc
+WORKDIR /app
+VOLUME app
+RUN npm i -g @nestjs/cli
