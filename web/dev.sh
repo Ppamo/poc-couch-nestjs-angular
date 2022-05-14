@@ -1,10 +1,10 @@
 #!/bin/bash
 APP=angulardev
-IMAGE=angular:0.1.0
+IMAGE=angular:1.1.0
 
 docker images --format '{{.Repository}}:{{.Tag}}' | grep "$IMAGE"
 if [ $? -ne 0 ]; then
-	docker build -t $IMAGE -f images/Dockerfile.dev images
+	docker build -t $IMAGE -f Dockerfile.dev .
 fi
 
 docker run -ti \
