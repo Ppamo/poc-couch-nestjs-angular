@@ -8,7 +8,7 @@ import { Event } from './events';
 })
 
 export class ServicesService {
-  url: string=`http://lynch:3000`
+  url: string=`http://localhost:3000`
   constructor(private http:HttpClient) { }
 
   EventAdd(data:Event):Observable<any>{

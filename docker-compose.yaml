@@ -1,0 +1,31 @@
+version: "3"
+services:
+  frontend:
+    build: web
+    container_name: webapp
+    ports:
+      - "8080:4200"
+    links:
+      - backend
+  backend:
+    build: services
+    container_name: services
+    ports:
+      - "3000:3000"
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=AdminPass2
+      - COUCHDB_HOST=persistence
+      - COUCHDB_PORT=5984
+    links:
+      - persistence
+  persistence:
+    image: couchdb:3.2.2
+    container_name: persistence
+    ports:
+      - "5984:5984"
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=AdminPass2
+    volumes:
+      - "./persistence/data:/opt/couchdb/data"
